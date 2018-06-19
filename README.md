@@ -48,7 +48,7 @@ Installation
         
         form_params: first_name, last_name, email, password, address, status
         
-        Note: Feel free to change the fields of user table simply by using php migration, check more details on Laravel/ lumen                         documentaion.
+        Note: Feel free to change the fields of user table simply by using php migration, check more details on Laravel/ lumen documentaion.
     
     4.2  http://[your-domain]/api/login
     
@@ -61,9 +61,9 @@ Installation
     
           Header Authentication: Bearer [granted access token]
     
-          Note: these access tokens and refresh will be deleted on the database once logged out, I prefer to delete these tokens than to           use the revoke method.
+          Note: these access tokens and refresh will be deleted on the database once logged out, I prefer to delete these tokens than to use the revoke method.
         
-    5. You can now use this app as a start-up, to authenticate your routes and secure you api. Feel free to check the codes, it is not          the best but you can use it to create a lumen app with lumen passport already installed.
+ 5. You can now use this app as a start-up, to authenticate your routes and secure you api. Feel free to check the codes, it is not          the best but you can use it to create a lumen app with lumen passport already installed.
     
 
         
