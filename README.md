@@ -51,18 +51,18 @@ Installation
 
 4. Using your favorite REST Client test these URI
 
-        http://[your-domain]/api/register
+http://[your-domain]/api/register
         
         form_params: first_name, last_name, email, password, address, status
         
         Note: Feel free to change the fields of user table simply by using php migration, check more details on Laravel/ lumen documentaion.
-         http://[your-domain]/api/login
+http://[your-domain]/api/login
     
          form_params: username, password
          
          Yey! access token has been granted.
          
-         http://[your-domain]/api/logout
+http://[your-domain]/api/logout
     
           Header Authentication: Bearer [granted access token]
     
