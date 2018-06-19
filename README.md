@@ -48,7 +48,7 @@ Installation
         
         form_params: first_name, last_name, email, password, address, status
         
-        Note: Feel free to change the fields of user table simply by using php migration, check more detaails on Laravel/ lumen                         documentaion.
+        Note: Feel free to change the fields of user table simply by using php migration, check more details on Laravel/ lumen                         documentaion.
     
     4.2  http://[your-domain]/api/login
     
