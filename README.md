@@ -34,15 +34,22 @@ Installation
             PASSPORT_CLIENT_SECRET= [leave it blank for a while]
 
 
-2. Run these commands
-        $ php artisan key:generate
-        $ php artisan migrate
-        $ composer require dusterio/lumen-passport
+2. Run these commands.
 
-3. Check your database and see the result, 
-   you can now host this api using virtual host or you can use the terminal and run $ php -S localhost:8000 -t ./public 
+            $ php artisan key:generate
+            $ php artisan migrate
+            $ composer require dusterio/lumen-passport
+            
+            Check your database and see the result, go to oauth_clients table, edit .env and use oauth clients id and secret
 
-4. using your favorite REST Client test these URI
+            PASSPORT_LOGIN_ENDPOINT=http://[your domain]/oauth/token
+            PASSPORT_CLIENT_ID= [oauth_clients->id]
+            PASSPORT_CLIENT_SECRET= [oauth_clients->secret]
+
+3.  This app can now be hosted or  run $ php -S localhost:8000 -t ./public to test your app.
+
+
+4. Using your favorite REST Client test these URI
 
     4.1 http://[your-domain]/api/register
         
