@@ -34,7 +34,7 @@ Installation
             PASSPORT_CLIENT_SECRET= [leave it blank for a while]
 
 
-2. Run these commands.
+3. Run these commands.
 
             $ php artisan key:generate
             $ php artisan migrate
@@ -46,10 +46,10 @@ Installation
             PASSPORT_CLIENT_ID= [oauth_clients->id]
             PASSPORT_CLIENT_SECRET= [oauth_clients->secret]
 
-3.  This app can now be hosted or  run $ php -S localhost:8000 -t ./public to test your app.
+4.  This app can now be hosted or  run $ php -S localhost:8000 -t ./public to test your app.
 
 
-4. Using your favorite REST Client test these URI
+5. Using your favorite REST Client test these URI
 
 http://[your-domain]/api/register
         
@@ -68,7 +68,7 @@ http://[your-domain]/api/logout
     
           Note: these access tokens and refresh will be deleted on the database once logged out, I prefer to delete these tokens than to use the revoke method.
         
- 5. You can now use this app as a start-up, to authenticate your routes and secure you api. Feel free to check the codes, it is not          the best but you can use it to create a lumen app with lumen passport already installed.
+ 6. You can now use this app as a start-up, to authenticate your routes and secure you api. Feel free to check the codes, it is not          the best but you can use it to create a lumen app with lumen passport already installed.
     
 
         
