@@ -21,12 +21,22 @@ class AuthController extends Controller
                     'grant_type' => 'password',
                     'client_id' => config('services.passport.client_id'),
                     'client_secret' => config('services.passport.client_secret'),
-                    'username' => $request->username,
+                    'username' => $request->email,
                     'password' => $request->password,
+                    'private' => $request->private,
                     'scope' => '*'
                 ]
             ]);
-            return $response->getBody();
+
+            if ($request->private == config('services.passport.do_not_use')) {
+                  return $response->getBody();
+            }
+            else{
+                return $json = [
+                'message' => 'Intruders Alert, stop accessing my app mother fucker!',
+                ];
+            }
+          
         } catch (\GuzzleHttp\Exception\BadResponseException $e) {
             if ($e->getCode() === 400) {
                 return response()->json('Invalid Request. Please enter a username or a password.', $e->getCode());
@@ -52,5 +62,20 @@ class AuthController extends Controller
         ];
         return response()->json($json, '200');
 
+    }
+    public function verify (Request $request) {
+        $vCode = $request->user()->v_code;
+        $vCodeRequest =  $request->vcode;
+        $userID = $request->user()->id;
+        if ($vCodeRequest == $vCode) {
+            $user = User::find($userID);
+            $user->verified = 1;
+            $user->save();
+            return $user->verified;
+        }
+        else {
+            return 'Invalid Verification Code';
+        }
+        
     }
 }

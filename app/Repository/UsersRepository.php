@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Dingo\Api\Routing\Helpers;
 
 class UsersRepository
 {
@@ -21,13 +23,14 @@ class UsersRepository
     }
     public function store(Request $request){
         $user = new User();
-        $user->first_name = $input['first_name'];
-        $user->last_name = $input['last_name'];
-        $user->email = $input['email'];
-        $user->password = Hash::make($input['password']);
-        $user->address = $input['address'];
-        $user->status = $input['status'];
+        $user->first_name = $request['first_name'];
+        $user->last_name = $request['last_name'];
+        $user->email = $request['email'];
+        $user->cellphone_number = $request['contact_no'];
+        $user->password = Hash::make($request['password']);
+        $user->v_code = rand(1000, 9999);
         $user->save();
+        return $user;
     }
     public function updateUser($id , $input){
         $user = User::find($id);

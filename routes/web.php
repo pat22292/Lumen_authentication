@@ -28,8 +28,10 @@ $api->version('v1', function ($api) {
         $api->group(['middleware'=>['auth:api']], function() use ($api) {
             //get user
         $api->get('users', 'UserController@show');
+        $api->post('verify', 'AuthController@verify');
+        $api->get('transactions', 'TransactionController@show');
         $api->get('user/{id}', 'UserController@showById');
-        $api->post('logout', 'AuthController@logout');
+        $api->get('logout', 'AuthController@logout');
         });
        
         $api->post('login', 'AuthController@login');

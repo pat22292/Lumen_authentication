@@ -19,9 +19,10 @@ class CreateTableUsers extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
+            $table->bigInteger('cellphone_number');
             $table->string('password');
-            $table->string('address');
-            $table->string('status');
+            $table->string('v_code')->length(4);
+            $table->boolean('verified')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -36,7 +37,7 @@ class CreateTableUsers extends Migration
     public function down()
     {
         
-        Schema::drop('users');
+        Schema::dropIfExists('users');
             
     }
 }

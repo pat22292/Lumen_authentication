@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+// use App\User;
 use App\Transformer\UserTransformer;
 use App\Repository\UsersRepository;
 use Dingo\Api\Routing\Helpers;
@@ -24,10 +24,18 @@ class UserController extends Controller
         $this->userTransformer = $userTransformer;
     }
 
-    public function show(){
+    public function show(Request $request){
+      $verifiedUser = $request->user()->verified;
+      
+      if ($verifiedUser == false) {
+       
+        return "You're account is not verified";
+      }
+      else {
         $user = $this->userRepository->getAll();
         $response = $this->response->collection($user, $this->userTransformer);
         return $response;
+      } 
     }
     public function showById($id){
         $user = $this->userRepository->getByID($id);
@@ -35,25 +43,15 @@ class UserController extends Controller
         return $response;
     }
      public function register(Request $request){
-        $this->validate($request, [
+              $this->validate($request, [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|string',
-            'password' => 'required|string',
-            'address' => 'required|string',
-            'status' => 'required|boolean',
+            'contact_no' => 'required|digits:12',
+            'password' => 'required|string'
         ]);
-
-        $user = new User();
-        $user->first_name = $request['first_name'];
-        $user->last_name = $request['last_name'];
-        $user->email = $request['email'];
-        $user->password = Hash::make($request['password']);
-        $user->address = $request['address'];
-        $user->status = $request['status'];
-        $user->save();
-
-        $response = $this->response->item($user, $this->userTransformer);
-        return response($response, 201);
+        $user = $this->userRepository->store($request);
+         $response = $this->response->item($user, $this->userTransformer);
+        return $response;
     }
 }

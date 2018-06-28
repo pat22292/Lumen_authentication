@@ -2,6 +2,7 @@
 
 namespace App;
 
+// use App\Services;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Auth\Authenticatable;
 use Laravel\Lumen\Auth\Authorizable;
@@ -10,10 +11,8 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Dusterio\LumenPassport\LumenPassport;
 
-// Somewhere in your application service provider or bootstrap process
-LumenPassport::allowMultipleTokens();
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract
+class Transaction extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use HasApiTokens, Authenticatable, Authorizable;
 
@@ -23,20 +22,27 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
 
-    protected $table='users';
+    protected $table='finishtask';
 
-    protected $fillable = [
-        'first_name','last_name', 'email', 'address'
-    ];
+    
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = [
-        'password',
-    ];
-
+    public function service () {
+        // return Services::where('id',$this->service_category)->first()->service_name;
+        return $this->belongsTo('App\Service','service_category', 'id');
+    }
     
+    public function unitMeasurement ($meas, $quant) {
+        if ($meas == 'Tons') {
+            $total = $quant/1000;
+            return $total;
+        }
+        else {
+            return $quant;
+        }
+    }
 }
