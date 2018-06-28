@@ -38,7 +38,7 @@ Installation
 
             $ php artisan key:generate
             $ php artisan migrate
-            $ php passport:install
+            $ php artisan passport:install
             
             Check your database and see the result, go to oauth_clients table, edit .env and use oauth clients id and secret
 
