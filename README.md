@@ -71,5 +71,5 @@ http://[your-domain]/api/logout
         
  6. You can now use this app as a start-up, to authenticate your routes and secure you api. Feel free to check the codes, it is not          the best but you can use it to create a lumen app with lumen passport already installed.
     
-
+NOTE: Use virtual hosting instead of using php artisan serve 
         
