@@ -32,8 +32,9 @@ Installation
             PASSPORT_LOGIN_ENDPOINT=http://[your domain]/oauth/token
             PASSPORT_CLIENT_ID= [leave it blank for a while]
             PASSPORT_CLIENT_SECRET= [leave it blank for a while]
-
-
+            SMS_KEY = [SMS gateway key]
+            SMS_DEVICE_ID = [sms gateway device id]
+            
 3. Run these commands.
 
             $ composer install
