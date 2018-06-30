@@ -75,6 +75,7 @@ class UserController extends Controller
                 
                 ,
                 'headers' => [
+                    //SMS gateway api key
                     'Authorization' => config('services.sms.sms_key')
                 ]
             ]);

@@ -8,6 +8,7 @@ return [
         'do_not_use' => env('DO_NOT_USE'),
         
     ],
+    //SMS gateway api key
     'sms' => [
         'sms_key' => env('SMS_KEY'),
         'sms_device_id' => env('SMS_DEVICE_ID')
