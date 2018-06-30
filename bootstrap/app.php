@@ -46,6 +46,7 @@ $app->singleton(
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
     App\Console\Kernel::class
+    
 );
 $app->configure('auth');
 $app->configure('services');
@@ -68,6 +69,7 @@ $app->configure('services');
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
     'cors' => \Barryvdh\Cors\HandleCors::class,
+    'SMSGateway' => Limatheus\SmsGateway\Facade::class,
 ]);
 $app->configure('cors');
 /*
@@ -89,6 +91,8 @@ $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 Dusterio\LumenPassport\LumenPassport::routes(app()->router);
 $app->register(Barryvdh\Cors\ServiceProvider::class);
 $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
+Limatheus\SmsGateway\SmsGatewayServiceProvider::class;
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

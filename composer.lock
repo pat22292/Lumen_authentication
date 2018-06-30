@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9f5aa4b1f1fdcb0c65780ea233587422",
+    "content-hash": "26646b1e5a82cd65439e8252e72f3a8e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2610,6 +2610,39 @@
                 "server"
             ],
             "time": "2018-06-23T16:57:59+00:00"
+        },
+        {
+            "name": "limatheus/smsgateway",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/limatheus/smsgateway.git",
+                "reference": "3d3106c3b20e612e8000d17f20c2f10e58541e98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/limatheus/smsgateway/zipball/3d3106c3b20e612e8000d17f20c2f10e58541e98",
+                "reference": "3d3106c3b20e612e8000d17f20c2f10e58541e98",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Limatheus\\SmsGateway\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matheus Lima",
+                    "email": "contato@matheuslima.com.br"
+                }
+            ],
+            "description": "A Laravel bridge to http://smsgateway.me",
+            "time": "2015-12-14T00:19:24+00:00"
         },
         {
             "name": "monolog/monolog",

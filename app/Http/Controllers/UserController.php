@@ -9,6 +9,9 @@ use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
 use Laravel\Passport\Bridge\UserRepository;
 use Illuminate\Support\Facades\Hash;
+use GuzzleHttp\Middleware;
+use GuzzleHttp\Client;
+
 
 class UserController extends Controller
 {
@@ -41,17 +44,40 @@ class UserController extends Controller
         $user = $this->userRepository->getByID($id);
         $response = $this->response->item($user, $this->userTransformer);
         return $response;
+        
     }
      public function register(Request $request){
-              $this->validate($request, [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|string',
-            'contact_no' => 'required|digits:12',
-            'password' => 'required|string'
+        $this->validate($request, [
+         'first_name' => 'required|string',
+         'last_name' => 'required|string',
+         'email' => 'required|string',
+         'contact_no' => 'required|digits:11',
+         'password' => 'required|string'
         ]);
         $user = $this->userRepository->store($request);
          $response = $this->response->item($user, $this->userTransformer);
-        return $response;
+         
+        // return $response;
+        // return ;
+  
+           $http = new \GuzzleHttp\Client;
+
+        
+            $http->post('https://smsgateway.me/api/v4/message/send', [
+               
+                'json' =>  [
+                [
+                    'phone_number' => $user->cellphone_number,
+                    'message' => 'Hi, ' . $user->email .' your verification code is '. $user->v_code,
+                    'device_id' => 95023
+                ]
+                ]
+                
+                ,
+                'headers' => [
+                    'Authorization' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTUzMDI0NzYxNCwiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjU1OTU4LCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.czPTcI9D51kpOqV8jGKGeciIxbuI-SHgyXH4dMWjaXk'
+                ]
+            ]);
+            return $response;
     }
 }

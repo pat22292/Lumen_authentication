@@ -12,7 +12,8 @@
         "dusterio/lumen-passport": "^0.2.6",
         "barryvdh/laravel-cors": "^0.11.0",
         "dingo/api": "2.0.0-alpha1",
-        "guzzlehttp/guzzle": "^6.3"
+        "guzzlehttp/guzzle": "^6.3",
+        "limatheus/smsgateway": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
