@@ -46,6 +46,10 @@ Installation
             PASSPORT_LOGIN_ENDPOINT=http://[your domain]/oauth/token
             PASSPORT_CLIENT_ID= [oauth_clients->id]
             PASSPORT_CLIENT_SECRET= [oauth_clients->secret]
+            DO_NOT_USE = Y0U!RN0TW3LC0M3
+
+            SMS_KEY = [SMS gateway key]
+            SMS_DEVICE_ID = [sms gateway device id]
 
 4.  This app can now be hosted or  run $ php -S localhost:8000 -t ./public to test your app.
 
