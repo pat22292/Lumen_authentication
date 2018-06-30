@@ -69,13 +69,13 @@ class UserController extends Controller
                 [
                     'phone_number' => $user->cellphone_number,
                     'message' => 'Hi, ' . $user->email .' your verification code is '. $user->v_code,
-                    'device_id' => 95023
+                    'device_id' => config('services.sms.sms_device_id')
                 ]
                 ]
                 
                 ,
                 'headers' => [
-                    'Authorization' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTUzMDI0NzYxNCwiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjU1OTU4LCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.czPTcI9D51kpOqV8jGKGeciIxbuI-SHgyXH4dMWjaXk'
+                    'Authorization' => config('services.sms.sms_key')
                 ]
             ]);
             return $response;
